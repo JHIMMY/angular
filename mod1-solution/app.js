@@ -6,16 +6,32 @@
    
    .controller('LunchCheckerController', LunchCheckerController);
    
-   LunchCheckerController.$inject = [$scope];
+   LunchCheckerController.$inject = ["$scope"];
    
    function LunchCheckerController($scope){
       $scope.message = "";
-      $scope.listOfDishes = ""; //later an array
+      $scope.listOfDishesString = "";
+      $scope.listOfDishesArray = [];
+      
       
       $scope.checkIfTooMuch = function(){
-         if ($scope.listOfDishes == ""){
-            $scope.message = "Please Enter Data First";
+         var numberItems = 0;
+         $scope.listOfDishesArray = $scope.listOfDishesString.split(",");
+         $scope.listOfDishesArray.forEach(function(element, index, array){
+            array[index] = element.trim();
+            if (element !== ""){
+               numberItems++;
+            }
+         });
+         if (numberItems === 0){
+            $scope.message = "Please enter data first!";
          }
-      }
+         else if (numberItems <= 3){
+            $scope.message = "Enjoy!";
+         }
+         else{
+            $scope.message = "Too much!";
+         }
+      };
    }
 })();
