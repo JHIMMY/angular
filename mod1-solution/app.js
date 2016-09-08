@@ -19,7 +19,7 @@
          $scope.listOfDishesArray = $scope.listOfDishesString.split(",");
          $scope.listOfDishesArray.forEach(function(element, index, array){
             array[index] = element.trim();
-            if (element !== ""){
+            if (array[index] !== ""){
                numberItems++;
             }
          });
