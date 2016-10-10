@@ -28,7 +28,7 @@
    function ShoppingListCheckOffService(){
       var service = this;
       // to Buy items
-      var itemsToBuy = ["cookies", "crakers", "candies", "lolipops", "bubble gum"];
+      var itemsToBuy = ["10 cookies", "15 crakers", "20 candies", "5 lolipops", "10 bubble gum"];
       
       // Already bought items
       var itemsBought = [];
@@ -39,7 +39,7 @@
       
       service.buyItem = function (index){
          var removed = itemsToBuy.splice(index, 1);
-         itemsBought.push(removed[0]);
+         itemsBought.push("Bought " + removed[0]);
          if (itemsBought.length == 0){
             console.log("no hay items");
          }
